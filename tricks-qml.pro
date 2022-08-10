@@ -24,13 +24,13 @@ ios {
     }
 }
 
-include(translations/translations.pri)
-include(objective-c/objective-c.pri)
-include(cpp/cpp.pri)
-include(configurations/configurations.pri)
+# include(translations/translations.pri)
+# include(objective-c/objective-c.pri)
+# include(cpp/cpp.pri)
+# include(configurations/configurations.pri)
 
 exists ($$PWD/qml/imports): QML_IMPORT_PATH += $$PWD/qml/imports
 
 RESOURCES += qml/qml.qrc
 
-android: include(/opt/develop/android/openssl/openssl.pri)
+# android: include(cpp/thirdparty/openssl/openssl.pri)

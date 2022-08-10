@@ -1,6 +1,7 @@
 
 TRANSLATIONS += \
-    $$files($$PWD/*.ts)
+    lang-en.ts \
+    lang-fa.ts
 
 DISTFILES += \
     lang-en.ts \

@@ -4,3 +4,6 @@
 [submodule "cpp/thirdparty/qzxing"]
 	path = cpp/thirdparty/qzxing
 	url = https://github.com/ftylitak/qzxing.git
+[submodule "cpp/thirdparty/openssl"]
+	path = cpp/thirdparty/openssl
+	url = https://github.com/KDAB/android_openssl.git
