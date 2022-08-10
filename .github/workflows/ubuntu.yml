@@ -30,11 +30,16 @@ jobs:
       - name: Install Qt from package manager
         run: |
           sudo apt update
-          sudo apt install qt5-default qt5-qmake qt5-qmake-bin libqt5core5a libqt5gui5 libqt5concurrent5 libqt5qml5 libqt5quick5
- 
+          sudo apt install qt5-default qt5-qmake qt5-qmake-bin libqt5core5a libqt5gui5 libqt5concurrent5 libqt5qml5 libqt5quick5 qml-module-qtquick2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-dialogs qml-module-qtquick-extras qml-module-qtquick-templates2 libqt5quickcontrols2-5 libqt5quicktemplates2-5 libqt5quickwidgets5
+
       - name: Install required packages
         run: |
           sudo apt install cmake make extra-cmake-modules libkf5syntaxhighlighting-dev libkf5syntaxhighlighting-data libkf5syntaxhighlighting-tools rpm
+          
+      - name: Install QtAseman
+        run: |
+          sudo add-apt-repository ppa:aseman/qt-modules
+          sudo apt install qt5aseman
           
       - name: Build with CMake
         run: |
