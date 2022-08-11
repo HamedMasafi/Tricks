@@ -50,16 +50,11 @@ jobs:
         run: |
           mkdir build-cmake
           cd build-cmake
-          cmake .. ${{ matrix.additional_arguments }}  ${{ matrix.cmake_params }}
+          cmake .. ${{ matrix.additional_arguments }}  ${{ matrix.cmake_params }} -DTRICKS_BUILD_DIR=build-cmake
           make -j 4
           VAR=`cat version`
           echo "version=${VAR}" >> $GITHUB_ENV
           
-      - name: Run tests
-        run: |
-          cd build-cmake
-          make test
-              
       - name: Build deb package
         run: |
           cd build-cmake
