@@ -3,11 +3,14 @@ cmake_minimum_required(VERSION 3.16)
 set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 0)
 set(PROJECT_VERSION_PATCH 0)
+set(PROJECT_BUNDLE_VERSION 5)
+set(APP_UNIQUEID "f293006e-ffe3-4609-b130-76d9d56b8278")
+set(APP_DOMAIN "io.aseman")
 
 add_definitions(-DAPP_VERSION="${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
-add_definitions(-DAPP_BUNDLE_VERSION=5)
-add_definitions(-DAPP_UNIQUEID="f293006e-ffe3-4609-b130-76d9d56b8278")
-add_definitions(-DAPP_DOMAIN="io.aseman")
+add_definitions(-DAPP_BUNDLE_VERSION=${PROJECT_BUNDLE_VERSION})
+add_definitions(-DAPP_UNIQUEID="${APP_UNIQUEID}")
+add_definitions(-DAPP_DOMAIN="${APP_DOMAIN}")
 
 project(tricks VERSION 1.0.0 LANGUAGES CXX)
 
@@ -35,10 +38,14 @@ find_package (
         Qml
         Quick
         Widgets
-        QAsemanCore
-        QAsemanQml
-        QAsemanGui
-        QAsemanNetwork
+)
+find_library(
+    REQUIRED
+
+    QAsemanCore
+    QAsemanQml
+    QAsemanGui
+    QAsemanNetwork
 )
 #find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Qml Quick)
 
@@ -54,16 +61,17 @@ add_executable(
 #include(qml/CMakeLists.txt)
 #qt_add_resources(tricks qml/qml.qrc)
 
-target_link_libraries(tricks PRIVATE
-    Qt::Core
-    Qt::Gui
-    Qt::Quick
-    Qt::Qml
-    Qt::Widgets
-    Qt::QAsemanCore
-    Qt::QAsemanQml
-    Qt::QAsemanGui
-    Qt::QAsemanNetwork
+target_link_libraries(
+    tricks PRIVATE
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Quick
+    Qt5::Qml
+    Qt5::Widgets
+    QAsemanCore
+    QAsemanQml
+    QAsemanGui
+    QAsemanNetwork
 )
 
 
@@ -87,3 +95,8 @@ install(TARGETS tricks
 # Consider using qt_generate_deploy_app_script() for app deployment if
 # the project can use Qt 6.3. In that case rerun qmake2cmake with
 # --min-qt-version=6.3.
+
+
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(tricks)
+endif()

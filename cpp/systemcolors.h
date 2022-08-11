@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QWindow>
 #include <QPointer>
-#include <QAsemanTitleBarColorGrabber>
+#include <QAsemanGui/QAsemanTitleBarColorGrabber>
 
 class SystemColors : public QObject
 {

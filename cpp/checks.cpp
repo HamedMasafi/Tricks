@@ -9,7 +9,7 @@
 #include <QDir>
 #include <QApplication>
 #include <QSettings>
-#include <QAsemanApplication>
+#include <QAsemanGui/QAsemanApplication>
 #include <QPixmap>
 #include <QMessageBox>
 #include <QDebug>

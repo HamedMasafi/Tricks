@@ -36,16 +36,21 @@ jobs:
         run: |
           sudo apt install cmake make extra-cmake-modules libkf5syntaxhighlighting-dev libkf5syntaxhighlighting-data libkf5syntaxhighlighting-tools rpm
           
-      - name: Install QtAseman
+      - name: Build QtAseman
         run: |
-          sudo add-apt-repository ppa:aseman/qt-modules
-          sudo apt install qt5aseman
+          git clone https://github.com/HamedMasafi/QtAseman.git
+          cd QtAseman
+          mkdir build
+          cd build
+          qmake ..
+          make -j 4
+          sudo make install
           
       - name: Build with CMake
         run: |
           mkdir build-cmake
           cd build-cmake
-          cmake .. ${{ matrix.additional_arguments }}  ${{ matrix.cmake_params }} -DGITKLIENT_BUILD_DIR=build-cmake
+          cmake .. ${{ matrix.additional_arguments }}  ${{ matrix.cmake_params }}
           make -j 4
           VAR=`cat version`
           echo "version=${VAR}" >> $GITHUB_ENV

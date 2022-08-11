@@ -3,7 +3,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTimer>
-#include <QAsemanCoreVersion>
+#include <QAsemanCore/QAsemanCoreVersion>
 
 #include "appoptions.h"
 #include "trickstools.h"
