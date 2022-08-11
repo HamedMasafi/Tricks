@@ -102,8 +102,8 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 
 if (TRICKS_BUILD_DIR)
-    file(WRITE ${GITKLIENT_BUILD_DIR}/version "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
-    message("-- Version in file ${GITKLIENT_BUILD_DIR}/version saved")
+    file(WRITE ${TRICKS_BUILD_DIR}/version "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+    message("-- Version in file ${TRICKS_BUILD_DIR}/version saved")
 endif()
 
 
