@@ -38,16 +38,14 @@ find_package (
         Qml
         Quick
         Widgets
-)
-find_library(
-    REQUIRED
+        QuickControls2
+        Multimedia
 
-    QAsemanCore
-    QAsemanQml
-    QAsemanGui
-    QAsemanNetwork
+        QAsemanCore
+        QAsemanQml
+        QAsemanGui
+        QAsemanNetwork
 )
-#find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Qml Quick)
 
 
 include(objective-c/CMakeLists.txt)
@@ -68,10 +66,12 @@ target_link_libraries(
     Qt5::Quick
     Qt5::Qml
     Qt5::Widgets
-    QAsemanCore
-    QAsemanQml
-    QAsemanGui
-    QAsemanNetwork
+    Qt5::QuickControls2
+    Qt5::Multimedia
+    Qt5::QAsemanCore
+    Qt5::QAsemanQml
+    Qt5::QAsemanGui
+    Qt5::QAsemanNetwork
 )
 
 
@@ -101,43 +101,42 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(tricks)
 endif()
 
-if (TRICKS_BUILD_DIR)
-    file(WRITE ${TRICKS_BUILD_DIR}/version "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
-    message("-- Version in file ${TRICKS_BUILD_DIR}/version saved")
-endif()
+ if (TRICKS_BUILD_DIR)
+     file(WRITE ${TRICKS_BUILD_DIR}/version "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+     message("-- Version in file ${TRICKS_BUILD_DIR}/version saved")
+ endif()
 
 
-#CPack
-set(CPACK_PACKAGE_NAME ${PROJECT_NAME}
-    CACHE STRING "Tricks"
-)
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Tricks"
-    CACHE STRING "Social media for developers"
-)
-set(CPACK_PACKAGE_VENDOR "Aseman")
-set(CPACK_VERBATIM_VARIABLES YES)
-set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
-#SET(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_SOURCE_DIR}/_packages")
+# CPack
+ set(CPACK_PACKAGE_NAME ${PROJECT_NAME}
+     CACHE STRING "Tricks"
+ )
+ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Tricks"
+     CACHE STRING "Social media for developers"
+ )
+ set(CPACK_PACKAGE_VENDOR "Aseman")
+ set(CPACK_VERBATIM_VARIABLES YES)
+ set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
+ SET(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_SOURCE_DIR}/_packages")
 
-set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
-set(CPACK_PACKAGE_DESCRIPTION   "Social media for developers")
-set(CPACK_PACKAGE_CONTACT "info@aseman.io")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aseman")
+ set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+ set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+ set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+ set(CPACK_PACKAGE_DESCRIPTION   "Social media for developers")
+ set(CPACK_PACKAGE_CONTACT "info@aseman.io")
+ set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aseman")
 
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
-#set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+ set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+ set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 
-if (TRICKS_BUILD_DIR)
-    set(CPACK_PACKAGE_FILE_NAME "tricks")
-else()
-    set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
-endif()
+ if (TRICKS_BUILD_DIR)
+     set(CPACK_PACKAGE_FILE_NAME "tricks")
+ else()
+     set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+ endif()
 
-set(CPACK_COMPONENTS_GROUPING ONE_PER_GROUP)
-# without this you won't be able to pack only specified component
-set(CPACK_DEB_COMPONENT_INSTALL YES)
-set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+ set(CPACK_COMPONENTS_GROUPING ONE_PER_GROUP)
+  set(CPACK_DEB_COMPONENT_INSTALL YES)
+ set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
-include(CPack)
+ include(CPack)
