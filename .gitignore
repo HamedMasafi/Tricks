@@ -59,3 +59,5 @@ compile_commands.json
 # Firebase
 configurations/default/android/google-services.json
 configurations/default/ios/GoogleService-Info.plist
+
+.kate-swp

@@ -72,5 +72,5 @@ jobs:
         run: |
           tag_name="${GITHUB_REF##*/}"
           gh release create $tag_name --generate-notes
-          gh release upload $tag_name ./build-cmake/tricks.deb#tricks_${tag_name}_amd64.deb
-          gh release upload $tag_name ./build-cmake/tricks.rpm#tricks-${tag_name}-Linux.rpm
+          gh release upload $tag_name ./build-cmake/tricks.deb#tricks_${tag_name}_amd64-ubuntu-2004.deb
+          gh release upload $tag_name ./build-cmake/tricks.rpm#tricks-${tag_name}-Linux-ubuntu-2204.rpm
