@@ -60,4 +60,4 @@ compile_commands.json
 configurations/default/android/google-services.json
 configurations/default/ios/GoogleService-Info.plist
 
-.kate-swp
+*.kate-swp
