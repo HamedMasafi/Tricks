@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-22.04]
+        platform: [ubuntu-20.04]
  
     runs-on: ${{ matrix.platform }}
     name: ${{ matrix.platform }}
@@ -29,7 +29,7 @@ jobs:
  
       - name: Install required packages
         run: |
-          sudo apt install cmake make extra-cmake-modules libkf5syntaxhighlighting-dev libkf5syntaxhighlighting-data libkf5syntaxhighlighting-tools rpm
+          sudo apt install cmake make extra-cmake-modules libkf5syntaxhighlighting-dev libkf5syntaxhighlighting-data libkf5syntaxhighlighting-tools rpm libicu66 libicu-dev
           
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
